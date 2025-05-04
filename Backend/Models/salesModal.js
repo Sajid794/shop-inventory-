@@ -1,28 +1,33 @@
 import mongoose from 'mongoose';
 
-const salesSchema = new mongoose.Schema({
+const salesSchema = new mongoose.Schema(
+  {
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    clientId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Client',
+      required: true,
     },
     cust_name: {
-        type: String,
-        required: true,
+      type: String,
     },
     cust_email: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
     },
     cust_contact: {
-        type: String,
+      type: String,
     },
     cartItems: {
-        type: Array,
-        default: [],
-    }
-});
+      type: Array,
+      default: [],
+    },
+  },
+  { timestamps: true }
+);
 
 const Sale = mongoose.model('Sale', salesSchema);
 

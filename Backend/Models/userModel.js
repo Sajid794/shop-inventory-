@@ -6,23 +6,25 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
     lowercase: true,
-    trim: true
+    trim: true,
   },
+  name: { type: String },
+  contact: { type: String },
   password: {
     type: String,
-    required: [true , 'password is required']
+    required: [true, 'password is required'],
   },
   products: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Product"
-    }
+      ref: 'Product',
+    },
   ],
   sales: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Sale"
-    }
+      ref: 'Sale',
+    },
   ],
 });
 
