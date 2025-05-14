@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import User from '../Models/userModel.js';
 import bcrypt from 'bcrypt';
 import Client from '../Models/clientUserModal.js';
+import Sale from '../Models/salesModal.js';
 
 export const registerController = async (req, res) => {
   try {

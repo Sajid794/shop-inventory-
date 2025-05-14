@@ -5,14 +5,16 @@ import Product from '../Models/productModal.js';
 export const getSalesController = async (req, res) => {
   try {
     // get user
-    const user = await User.findOne({ _id: req.user.userId }).populate('sales');
+    const user = await Sale.find({ userId: req.user.userId })
+      .populate('userId')
+      .populate('clientId');
     if (!user) {
       return res
         .status(404)
         .json({ status: false, msessage: 'unauthorized user', error });
     }
     // console.log("sales list:",user.sales);
-    return res.status(200).json({ status: true, data: user.sales });
+    return res.status(200).json({ status: true, data: user });
   } catch (error) {
     console.error(error);
     res

@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import baseUrl from '../../utils/baseurl';
-import { Table, Tag, Space, Card, Typography, Descriptions, Badge } from 'antd';
+import {
+  Table,
+  Tag,
+  Space,
+  Card,
+  Typography,
+  Descriptions,
+  Badge,
+  Button,
+} from 'antd';
 import type { ColumnsType } from 'antd/es/table';
+import { ReloadOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -178,9 +188,12 @@ const MyOrderList = () => {
 
   return (
     <div style={{ padding: '24px' }}>
-      <Title level={2} style={{ marginBottom: '24px' }}>
-        My Orders
-      </Title>
+      <div className=' flex justify-between'>
+        <Title level={2} style={{ marginBottom: '24px' }}>
+          My Orders
+        </Title>
+        <Button icon={<ReloadOutlined />} onClick={() => fetchOrderList()} />
+      </div>
       <Table
         columns={columns}
         dataSource={orders}

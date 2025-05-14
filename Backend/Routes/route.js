@@ -23,7 +23,10 @@ import {
   getSalesController,
   getMyOrderList,
 } from '../Controllers/salesController.js';
-import { clientregisterController } from '../Controllers/clientAuth.js';
+import {
+  clientregisterController,
+  crateOderController,
+} from '../Controllers/clientAuth.js';
 export const route = Router();
 
 // auth endpoint:
@@ -48,6 +51,8 @@ route.post('/deletesales', authMiddleware, deleteSaleController);
 route.post('/clientsignup', clientregisterController);
 route.post('/client-login', clientLogin);
 route.get('/client-list', clientList);
+
+route.post('/create-order', authClientMiddleware, crateOderController);
 
 //products
 

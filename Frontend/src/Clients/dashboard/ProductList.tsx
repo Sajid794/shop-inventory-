@@ -12,6 +12,7 @@ import {
   Form,
   InputNumber,
   message,
+  notification,
 } from 'antd';
 import {
   SearchOutlined,
@@ -65,6 +66,22 @@ const ProductList = () => {
       form.resetFields();
     }
     setVisible(true);
+  };
+
+  const butProduct = async (values: any) => {
+    await axios.post(
+      `${baseurl}/create-order`,
+      {
+        admin: values.userId?._id,
+        product: values._id,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    notification.success({
+      message: 'Product order successfully',
+    });
   };
 
   return (
@@ -140,7 +157,7 @@ const ProductList = () => {
               //   </div>
               // }
               actions={[
-                <Button>Buy</Button>,
+                <Button onClick={() => butProduct(product)}>Buy</Button>,
                 // <EditOutlined key='edit' onClick={() => showModal(product)} />,
                 // <DeleteOutlined
                 //   key='delete'
